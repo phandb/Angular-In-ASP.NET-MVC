@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@styles.Render("~/Content/Angular")
+
+<app-root>test</app-root>
+
+@Scripts.Render("~/bundels/Angular")
+
+@*The code above will actually render the JS bundle that our angular application produces. 
+    Angular will find the <app-root> tag and render the App component and everything inside of it.*@
+
+
+<h2>Index</h2>
+
