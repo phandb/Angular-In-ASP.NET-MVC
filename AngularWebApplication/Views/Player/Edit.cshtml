@@ -1,0 +1,69 @@
+﻿@model AngularWebApplication.Player
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    textbox {
+        padding: 5px;
+        border: 1px solid groove;
+    }
+
+    input.ng-dirty.ng-invalid {
+        border: 1px solid red;
+        background-color: rgb(255, 244, 244);
+    }
+
+    .error {
+        color: red;
+    }
+</style>
+<h2 style="text-align:center">Edit Player Record</h2>
+<br><hr />
+<div ng-controller="PlayerController">
+    <form name="EditForm" novalidate>
+        <div style="color:red">{{message}}</div>
+        <table class="table table-responsive table-bordered">
+            <tr>
+                <td>ID</td>
+                <td>
+                    <input class="textbox" type="number" ng-model="PlayerId" name="pId" ng-class="submitted?'ng-dirty':''" required autofocus />
+                    <span class="error" ng-show="(EditForm.pId.$dirty || submitted) && EditForm.pId.$error.required">ID is Required</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Player Name</td>
+                <td>
+                    <input class="textbox" type="text" ng-model="PlayerName" name="pName" ng-class="submitted?'ng-dirty':''" required autofocus />
+                    <span class="error" ng-show="(EditForm.pName.$dirty || submitted) && EditForm.pName.$error.required">Name Is Required</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Club</td>
+                <td>
+                    <input class="textbox" type="text" ng-model="PlayerClub" name="pClub" ng-class="submitted?'ng-dirty':''" required autofocus />
+                    <span class="error" ng-show="(EditForm.pClub.$dirty || submitted) && EditForm.pClub.$error.required">Club Is Required</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Position</td>
+                <td>
+                    <input class="textbox" type="text" ng-model="PlayerPosition" name="pPosition" ng-class="submitted?'ng-dirty':''" required autofocus />
+                    <span class="error" ng-show="(EditForm.pPosition.$dirty || submitted) && EditForm.pPosition.$error.required">Position Is Required</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Joined Club On</td>
+                <td>
+                    <input class="textbox" type="date" ng-model="PlayerJoinedClubOn" name="pJoinedDate" ng-class="submitted?'ng-dirty':''" required autofocus />
+                    <span class="error" ng-show="(EditForm.pJoinedDate.$dirty || submitted) && EditForm.pJoinedDate.$error.required">Date Is Required</span>
+                </td>
+            </tr>
+            
+        </table>
+        <input type="submit" class="btn btn-success" ng-click="UpdatePlayer(Player)" value="Update" />
+        <p class="btn btn-primary">@Html.ActionLink("Back to List", "Index", null, new { style = "color:white" })</p>
+    </form>
+</div>
+

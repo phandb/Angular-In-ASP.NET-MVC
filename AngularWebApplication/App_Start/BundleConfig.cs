@@ -27,6 +27,7 @@ namespace AngularWebApplication
                       "~/Content/site.css"));
 
             // Angular bundles
+            /*
             bundles.Add(new ScriptBundle("~/bundles/Angular")
               .Include(
                 "~/bundles/AngularOutput/inline.*",
@@ -38,6 +39,12 @@ namespace AngularWebApplication
 
             bundles.Add(new StyleBundle("~/Content/Angular")
               .Include("~/bundles/AngularOutput/styles.*"));
+              */
+
+            //Add AngularJS bundles
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                "~/Scripts/angular.js",
+                "~/Scripts/angular-route.js"));
         }
     }
 }

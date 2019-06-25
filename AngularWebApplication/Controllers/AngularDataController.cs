@@ -8,6 +8,9 @@ namespace AngularWebApplication.Controllers
 {
     public class AngularDataController : Controller
     {
+
+        //DbContext
+        
         // GET: AngularData
         public ActionResult Index()
         {

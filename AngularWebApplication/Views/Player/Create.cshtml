@@ -1,0 +1,71 @@
+﻿@model AngularWebApplication.Player
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    textbox {
+        padding: 5px;
+        border: 1px solid groove;
+    }
+
+    input.ng-dirty.ng-invalid {
+        border: 1px solid red;
+        background-color: rgb(255, 244, 244);
+    }
+
+    .error {
+        color: red;
+    }
+</style>
+
+<div>
+    <h2 style="text-align:center;">Add New Player</h2>
+</div>
+<br /><hr />
+<div ng-controller="PlayerController">
+    <form name="CreateForm" ng-submit="PlayerRecord(Player)" novalidate>
+        <div style="color:red">{{message}}</div>
+        <table class="table table-responsive table-bordered">
+            <tr>
+                <td>ID</td>
+                <td>
+                    <input class="textbox" type="number" ng-model="Player.PlayerId" name="pId" ng-class="submitted?'ng-dirty':''" required autofocus />
+                    <span class="error" ng-show="(CreateForm.pId.$dirty || submitted) && CreateForm.pId.$error.required">ID is Required</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Player Name</td>
+                <td>
+                    <input class="textbox" type="text" ng-model="Player.PlayerName" name="pName" ng-class="submitted?'ng-dirty':''" required autofocus />
+                    <span class="error" ng-show="(CreateForm.pName.$dirty || submitted) && CreateForm.pName.$error.required">Name Is Required</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Position</td>
+                <td>
+                    <input class="textbox" type="text" ng-model="Player.PlayerPosition" name="pPosition" ng-class="submitted?'ng-dirty':''" required autofocus />
+                    <span class="error" ng-show="(CreateForm.pPosition.$dirty || submitted) && CreateForm.pPosition.$error.required">Position Name Is Required</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Club</td>
+                <td>
+                    <input class="textbox" type="text" ng-model="Player.PlayerClub" name="pClub" ng-class="submitted?'ng-dirty':''" required autofocus />
+                    <span class="error" ng-show="(CreateForm.pClub.$dirty || submitted) && CreateForm.pClub.$error.required">Club Is Required</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Joined Club On</td>
+                <td>
+                    <input class="textbox" type="date" ng-model="Player.PlayerJoinedClubOn" name="pJoinedClub" ng-class="submitted?'ng-dirty':''" required autofocus />
+                    <span class="error" ng-show="(CreateForm.pJoinedClub.$dirty || submitted) && CreateForm.pJoinedClub.$error.required">Date Is Required</span>
+                </td>
+            </tr>
+            
+        </table>
+        <input type="submit" class="btn btn-success" style="" value="Create" />
+        <p class="btn btn-primary"> @Html.ActionLink("Back to List", "Index", null, new { style = "color:White" })</p>
+    </form>
+</div>

@@ -15,6 +15,6 @@ namespace AngularWebApplication.Data
         public static ApplicationDbContext Create() => new ApplicationDbContext();
 
         //add data set for model to fetch, update, or delete record from table
-        public DbSet<PlayerRecord> PlayerRecords { get; set; }
+        public DbSet<Player> Players   { get; set; }
     }
 }
