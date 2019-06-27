@@ -66,8 +66,8 @@ App.controller('PlayerController', function ($scope, PlayerService) {// controll
         Player["PlayerId"] = $scope.PlayerId;
         Player["PlayerName"] = $scope.PlayerName;
         Player["Club"] = $scope.PlayerClub;
-        Player["PlayerPosition"] = $scope.PlayerPosition;
-        Player["PlayerJoinedClubOn"] = $scope.PlayerJoinedClubOn;
+        Player["Position"] = $scope.PlayerPosition;
+        Player["JoinedClubOn"] = $scope.PlayerJoinedClubOn;
         PlayerService.UpdatePlayerData(Player);
     }
 
@@ -86,9 +86,9 @@ App.controller('PlayerController', function ($scope, PlayerService) {// controll
         $scope.player = data;
         $scope.PlayerId = data.PlayerId;
         $scope.PlayerName = data.PlayerName;
-        $scope.PlayerClub = data.PlayerClub;
-        $scope.PlayerPosition = data.PlayerPosition;
-        $scope.PlayerJoinedClubOn = data.PlayerJoinedClubOn;
+        $scope.PlayerClub = data.Club;
+        $scope.PlayerPosition = data.Position;
+        $scope.PlayerJoinedClubOn = data.JoinedClubOn;
         
     });
 
@@ -100,7 +100,7 @@ App.controller('PlayerController', function ($scope, PlayerService) {// controll
         $scope.EditForm.$setPristine();
     }
 });
-App.factory('PlayerService', function ($http, $q, $window) {//I have disscussed little bit about service in 3rd tutorial of angularjs series. Declare with some dependencies.
+App.factory('PlayerService', function ($http, $q, $window) {
     return {
         //Get all Player List 
         GetPlayerList: function () {

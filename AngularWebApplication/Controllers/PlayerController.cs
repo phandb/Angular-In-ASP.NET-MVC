@@ -37,7 +37,7 @@ namespace AngularWebApplication.Controllers
 
         //Get All Player Records
         [HttpGet]
-        public JsonResult GetAllPlayer()
+        public JsonResult GetAllPlayers()
         {
             var player = db.Players.OrderBy(p => p.PlayerId).ToList();
             return Json(player, JsonRequestBehavior.AllowGet);

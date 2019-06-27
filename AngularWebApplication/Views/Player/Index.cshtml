@@ -4,33 +4,42 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="text-center">Player Detail</h2>
+<h2 class="text-center">List of All Players</h2>
 <br /><hr />
 
+@* Use ng-controller *@
 <div ng-controller="PlayerController">
-    <table class="table table-dark table-bordered table-hover table-responsive">
+    <table class="table table-dark table-bordered table-hover ">
         <tr>
-            <td>ID:</td>
-            <td>{{PlayerId}}</td>
-        </tr>
-        <tr>
-            <td>Player Name:</td>
-            <td>{{PlayerName}}</td>
-        </tr>
-        <tr>
-            <td>Club</td>
-            <td>{{PlayerClub}}</td>
-        </tr>
-        <tr>
-            <td>Position</td>
-            <td>{{PlayerPosition}}</td>
-        </tr>
-        <tr>
-            <td>Joined Club On:</td>
-            <td>{{PlayerJoinedClubOn}}</td>
+            <th>ID</th>
+            <th>Player Name</th>
+            <th>Club</th>
+            <th>Position</th>
+            <th>Joined Club On</th>
+            <th>Action</th>
         </tr>
 
+        @* Fetch All the Player record using ng-repeat *@
+        <tr ng-repeat="p in player">
+
+            <td>{{p.PlayerId}}</td>
+
+            <td>{{p.PlayerName}}</td>
+    
+            <td>{{p.Club}}</td>
+       
+            <td>{{p.Position}}</td>
+      
+            <td>{{p.JoinedClubOn}}</td>
+            <td>
+                <input type="button" class="btn btn-outline-info" value="Edit" ng-click="RedirectToEdit(p)" /> 
+                <input type="button" class="btn btn-outline-success" value="Details" ng-click="RedirectToDetails(p)" /> 
+                <input type="button" class="btn btn-outline-danger" style="color:white" value="Delete" ng-click="DeleteEmployee(p)" />
+            </td>
+        </tr>
+        
+
     </table>
-    <p class="btn btn-primary"> @Html.ActionLink("Back to List", "Index", null, new { style = "color:white" })</p>
+    <p class="btn btn-outline-primary"> @Html.ActionLink("Create New", "Create", null, new { style = "color:blue" }) </p>
 </div>
 
